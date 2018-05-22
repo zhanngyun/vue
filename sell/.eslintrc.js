@@ -28,6 +28,8 @@ module.exports = {
     'space-before-function-paren': 0,
     "semi": 2,
     "indent": ["error", 2],
-    'space-infix-ops': 0
+    'space-infix-ops': 0,
+    'no-unused-expressions': 0,
+    'indent': 0
   }
 }

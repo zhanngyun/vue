@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <vHeader></vHeader>
+    <vHeader :seller="seller"></vHeader>
     <div class="tab">
-      <div class="tab-item border-1px">
+      <div class="tab-item border-1px" >
         <router-link to="/goods">商品</router-link>
       </div>
       <div class="tab-item">
@@ -30,15 +30,14 @@ export default {
     }
   },
   created() {
-    this.$http.jsonp('http://localhost:3000/api/seller').then((response) => {
-      // get body data
-      // response = response.body
-      if (response.errno === ERR_OK) {
-        this.seller = response.data
-        console.log(this.seller)
+    this.$http.get('http://localhost:3000/api/seller').then(res => {
+      res = res.body
+      if (res.errno === ERR_OK) {
+        this.seller = res.data
       }
-    }, response => {
+    }, res => {
       // error callback
+      console.log('error callback'+res)
     })
   },
   components: {
